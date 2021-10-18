@@ -36,7 +36,7 @@ $ BatchRename.exe
 
 使用方法:
     -P / --path <path> 指定需要重命名文件所在的文件夹路径
-    -p / --Prefix <string> 指定重命名文件名前缀
+    -p / --prefix <string> 指定重命名文件名前缀
     -n / --number <int> 指定重命名起始编号
 
 ```

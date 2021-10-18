@@ -23,28 +23,28 @@ public class BatchRename {
 			return;
 		}
 		
-		printDebugMessage("²ÎÊı¸öÊı: " + argMaps.size());
+		printDebugMessage("å‚æ•°ä¸ªæ•°: " + argMaps.size());
 		if (argMaps.size() == 1 && argMaps.containsKey("help")) {
 			showHelper();
 			return;
 		}
 		
 		if (!argMaps.containsKey("path")) {
-			printErrorMessage("ĞèÒª´«µİÖØÃüÃûÎÄ¼şµÄÄ¿Â¼Â·¾¶");
+			printErrorMessage("éœ€è¦ä¼ é€’é‡å‘½åæ–‡ä»¶çš„ç›®å½•è·¯å¾„");
 			return;
 		}
 		
 		String path = argMaps.get("path");
 		String userDir = System.getProperty("user.dir");
-		printDebugMessage("µ±Ç°Ä¿Â¼Â·¾¶: " + userDir);
+		printDebugMessage("å½“å‰ç›®å½•è·¯å¾„: " + userDir);
 		File dirFile = new File(argMaps.get("path"));
-		printDebugMessage("´«ÈëµÄÂ·¾¶ÊÇ·ñÊÇ¾ø¶ÔÂ·¾¶: " + dirFile.isAbsolute());
+		printDebugMessage("ä¼ å…¥çš„è·¯å¾„æ˜¯å¦æ˜¯ç»å¯¹è·¯å¾„: " + dirFile.isAbsolute());
 		if (!dirFile.isAbsolute()) {
 			dirFile = new File(userDir + File.separator + path);
 		}
 		
 		if (!dirFile.isDirectory()) {
-			printErrorMessage(dirFile.getPath() + " ²»ÊÇÒ»¸öÄ¿Â¼");
+			printErrorMessage(dirFile.getPath() + " ä¸æ˜¯ä¸€ä¸ªç›®å½•");
 			return;
 		}
 		
@@ -58,14 +58,14 @@ public class BatchRename {
 		
 		if (DEBUG) {
 			if (files.size() == 0) {
-				System.out.println(dirFile.getAbsolutePath() + " Ä¿Â¼ÖĞÃ»ÓĞÕÒµ½ÎÄ¼ş¡£");
+				System.out.println(dirFile.getAbsolutePath() + " ç›®å½•ä¸­æ²¡æœ‰æ‰¾åˆ°æ–‡ä»¶ã€‚");
 				return;
 			} else {
-				printArrayList("Ä¿Â¼ÖĞ°üº¬ÈçÏÂÎÄ¼ş: ", files);
+				printArrayList("ç›®å½•ä¸­åŒ…å«å¦‚ä¸‹æ–‡ä»¶: ", files);
 			}
 		}
 		
-		printDebugMessage("ÅÅĞòÎÄ¼ş...");
+		printDebugMessage("æ’åºæ–‡ä»¶...");
 		Collections.sort(files, new Comparator<File>() {
 
 			@Override
@@ -82,19 +82,19 @@ public class BatchRename {
 			}
 		});
 		
-		printArrayList("ÅÅĞòºóµÄÎÄ¼şÁĞ±í: ", files);
+		printArrayList("æ’åºåçš„æ–‡ä»¶åˆ—è¡¨: ", files);
 		
 		String prefix = "";
 		if (argMaps.containsKey("prefix")) {
 			prefix = argMaps.get("prefix");
-			System.out.println("ÖØÃüÃûÎÄ¼şÃûÇ°×ºÎª: " + prefix);
+			System.out.println("é‡å‘½åæ–‡ä»¶åå‰ç¼€ä¸º: " + prefix);
 		}
 		int startNumber = 0;
 		if (argMaps.containsKey("number")) {
 			startNumber = Integer.parseInt(argMaps.get("number"));
-			System.out.println("ÎÄ¼şÆğÊ¼±àºÅÎª: " + startNumber);
+			System.out.println("æ–‡ä»¶èµ·å§‹ç¼–å·ä¸º: " + startNumber);
 		}
-		printDebugMessage("¿ªÊ¼ÖØÃüÃûÎÄ¼ş¡£¡£¡£");
+		printDebugMessage("å¼€å§‹é‡å‘½åæ–‡ä»¶ã€‚ã€‚ã€‚");
 		File file = null;
 		int maxWidth = ((files.size() + startNumber) + "").length();
 		for (int i = 0; i < files.size(); i++) {
@@ -107,30 +107,30 @@ public class BatchRename {
 			startNumber++;
 		}
 		
-		printArrayList("ÖØÃüÃûºóµÄÎÄ¼şÁĞ±í: ", files);
+		printArrayList("é‡å‘½ååçš„æ–‡ä»¶åˆ—è¡¨: ", files);
 		
-		System.out.println("Íê³É¡£¡£¡£");
+		System.out.println("å®Œæˆã€‚ã€‚ã€‚");
 	}
 	
 	private static void showHelper() {
 		System.out.println("");
-		System.out.println("Ê¹ÓÃ·½·¨:");
-		System.out.println("    -P / --path <path> Ö¸¶¨ĞèÒªÖØÃüÃûÎÄ¼şËùÔÚµÄÎÄ¼ş¼ĞÂ·¾¶");
-		System.out.println("    -p / --Prefix <string> Ö¸¶¨ÖØÃüÃûÎÄ¼şÃûÇ°×º");
-		System.out.println("    -n / --number <int> Ö¸¶¨ÎÄ¼şÆğÊ¼±àºÅ");
+		System.out.println("ä½¿ç”¨æ–¹æ³•:");
+		System.out.println("    -P / --path <path> æŒ‡å®šéœ€è¦é‡å‘½åæ–‡ä»¶æ‰€åœ¨çš„æ–‡ä»¶å¤¹è·¯å¾„");
+		System.out.println("    -p / --prefix <string> æŒ‡å®šé‡å‘½åæ–‡ä»¶åå‰ç¼€");
+		System.out.println("    -n / --number <int> æŒ‡å®šæ–‡ä»¶èµ·å§‹ç¼–å·");
 		System.out.println("");
 	}
 
 	private static HashMap<String, String> parseArgs(String[] args) {
-		printDebugMessage("²ÎÊı: " + Arrays.toString(args));
+		printDebugMessage("å‚æ•°: " + Arrays.toString(args));
 		if (args == null || args.length == 0) {
-			printErrorMessage("Î´ÉèÖÃ²ÎÊı");
+			printErrorMessage("æœªè®¾ç½®å‚æ•°");
 			return null;
 		}
 		HashMap<String, String> results = new HashMap<>();
 		String key = null;
 		for (int i = 0; i < args.length; i++) {
-			printDebugMessage("²ÎÊı(" + i + "): " + args[i]);
+			printDebugMessage("å‚æ•°(" + i + "): " + args[i]);
 			switch (args[i]) {
 				case "-P":
 				case "--path":
@@ -143,7 +143,7 @@ public class BatchRename {
 					break;
 					
 				case "-p":
-				case "--Prefix":
+				case "--prefix":
 					key = "prefix";
 					break;
 					
@@ -158,25 +158,30 @@ public class BatchRename {
 							try {
 								Integer.parseInt(args[i].trim());
 							} catch (Exception e) {
-								printErrorMessage("ÎÄ¼şÆğÊ¼±àºÅ±ØĞëÊÇÕûÊı¡£\n" + e.getLocalizedMessage());
+								printErrorMessage("æ–‡ä»¶èµ·å§‹ç¼–å·å¿…é¡»æ˜¯æ•´æ•°ã€‚\n" + e.getLocalizedMessage());
 								System.exit(-1);
 							}
 						}
 						results.put(key, args[i].trim());
 						key = null;
 					} else {
-						System.out.println("Î´Öª²ÎÊı: " + args[i].trim());
+						System.out.println("æœªçŸ¥å‚æ•°: " + args[i].trim());
 						System.exit(-2);
+						key = null;
 					}
 					break;
 			}
 			
 		}
+		if (key != null) {
+			printErrorMessage("å‚æ•°ä¸æ­£ç¡®");
+			System.exit(-3);
+		}
 		return results;
 	}
 	
 	private static void printErrorMessage(String msg) {
-		System.err.println("´íÎó: " + msg);
+		System.err.println("é”™è¯¯: " + msg);
 		System.err.println("");
 	}
 	
@@ -194,3 +199,4 @@ public class BatchRename {
 		}
 	}
 }
+
